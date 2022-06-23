@@ -4,5 +4,5 @@ namespace CarShop.Code.Processors.RequestCreation;
 
 public interface IServiceRequestCreator
 {
-    public WorkOrder CreateRequest(String Id, String model, String make, List<Services> servicesList);
+    public WorkOrder CreateRequest(String id, String model, String make, List<Services> servicesList);
 }

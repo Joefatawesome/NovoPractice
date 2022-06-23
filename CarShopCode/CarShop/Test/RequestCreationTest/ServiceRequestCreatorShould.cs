@@ -32,11 +32,11 @@ public class ServiceRequestCreatorShould
         //Validation
         Assert.NotNull(workOrder);
         Assert.NotNull(workOrder.Car);
-        Assert.Equals(workOrder.Car.Id, testId);
-        Assert.Equals(workOrder.Car.Model, testModel);
-        Assert.Equals(workOrder.Car.Make, testMake);
+        Assert.AreEqual(workOrder.Car.Id, testId);
+        Assert.AreEqual(workOrder.Car.Model, testModel);
+        Assert.AreEqual(workOrder.Car.Make, testMake);
         Assert.NotNull(workOrder.Request);
-        Assert.Equals(workOrder.Request.Count, 1);
+        Assert.AreEqual(workOrder.Request.Count, 1);
         Assert.True(workOrder.Request.Contains(Services.Acceleration));
     }
 
@@ -59,11 +59,11 @@ public class ServiceRequestCreatorShould
         //Validation
         Assert.NotNull(workOrder);
         Assert.NotNull(workOrder.Car);
-        Assert.Equals(workOrder.Car.Id, testId);
-        Assert.Equals(workOrder.Car.Model, testModel);
-        Assert.Equals(workOrder.Car.Make, testMake);
+        Assert.AreEqual(workOrder.Car.Id, testId);
+        Assert.AreEqual(workOrder.Car.Model, testModel);
+        Assert.AreEqual(workOrder.Car.Make, testMake);
         Assert.NotNull(workOrder.Request);
-        Assert.Equals(workOrder.Request.Count, 2);
+        Assert.AreEqual(workOrder.Request.Count, 2);
         Assert.True(workOrder.Request.Contains(Services.Acceleration));
         Assert.True(workOrder.Request.Contains(Services.Deceleration));
     }
@@ -80,7 +80,7 @@ public class ServiceRequestCreatorShould
         };
 
         //Validation
-        Assert.Throws<Exception>(() => serviceRequestCreator.CreateRequest(null, testModel, testMake, desiredServices));
+        Assert.Throws<ArgumentNullException>(() => serviceRequestCreator.CreateRequest(null, testModel, testMake, desiredServices));
     }
 
     [Test]
@@ -95,7 +95,7 @@ public class ServiceRequestCreatorShould
         };
 
         //Validation
-        Assert.Throws<Exception>(() => serviceRequestCreator.CreateRequest("", testModel, testMake, desiredServices));
+        Assert.Throws<ArgumentNullException>(() => serviceRequestCreator.CreateRequest("", testModel, testMake, desiredServices));
     }
 
     [Test]
@@ -110,7 +110,7 @@ public class ServiceRequestCreatorShould
         };
 
         //Validation
-        Assert.Throws<Exception>(() => serviceRequestCreator.CreateRequest(testId, null, testMake, desiredServices));
+        Assert.Throws<ArgumentNullException>(() => serviceRequestCreator.CreateRequest(testId, null, testMake, desiredServices));
     }
 
     [Test]
@@ -125,7 +125,7 @@ public class ServiceRequestCreatorShould
         };
 
         //Validation
-        Assert.Throws<Exception>(() => serviceRequestCreator.CreateRequest(testId, "", testMake, desiredServices));
+        Assert.Throws<ArgumentNullException>(() => serviceRequestCreator.CreateRequest(testId, "", testMake, desiredServices));
     }
 
     [Test]
@@ -140,7 +140,7 @@ public class ServiceRequestCreatorShould
         };
 
         //Validation
-        Assert.Throws<Exception>(() => serviceRequestCreator.CreateRequest(testId, testModel, null, desiredServices));
+        Assert.Throws<ArgumentNullException>(() => serviceRequestCreator.CreateRequest(testId, testModel, null, desiredServices));
     }
 
     [Test]
@@ -155,7 +155,7 @@ public class ServiceRequestCreatorShould
         };
 
         //Validation
-        Assert.Throws<Exception>(() => serviceRequestCreator.CreateRequest(testId, testModel, "", desiredServices));
+        Assert.Throws<ArgumentNullException>(() => serviceRequestCreator.CreateRequest(testId, testModel, "", desiredServices));
     }
 
     [Test]
@@ -167,7 +167,7 @@ public class ServiceRequestCreatorShould
         string testMake = "suzuki";
 
         //Validation
-        Assert.Throws<Exception>(() => serviceRequestCreator.CreateRequest(testId, testModel, testMake, null));
+        Assert.Throws<ArgumentNullException>(() => serviceRequestCreator.CreateRequest(testId, testModel, testMake, null));
     }
 
     [Test]
@@ -179,6 +179,6 @@ public class ServiceRequestCreatorShould
         List<Services> desiredServices = new List<Services>();
 
         //Validation
-        Assert.Throws<Exception>(() => serviceRequestCreator.CreateRequest(testId, testModel, "", desiredServices));
+        Assert.Throws<ArgumentNullException>(() => serviceRequestCreator.CreateRequest(testId, testModel, "", desiredServices));
     }
 }

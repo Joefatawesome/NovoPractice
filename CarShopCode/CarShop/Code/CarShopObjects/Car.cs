@@ -2,7 +2,13 @@
 
 public class Car
 {
-    public string Id { get; set; }
-    public string Make { get; set; }
-    public string Model { get; set; }
+    public Car(string id, string make, string model)
+    {
+        Id = id;
+        Make = make;
+        Model = model;
+    }
+    public string Id { get; }
+    public string Make { get; }
+    public string Model { get; }
 }
