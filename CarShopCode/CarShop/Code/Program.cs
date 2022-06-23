@@ -1,3 +1,3 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using CarShop.Code;
 
-Console.WriteLine("Hello, World!");
+TaskRunner.Run();
